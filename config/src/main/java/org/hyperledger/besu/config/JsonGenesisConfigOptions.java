@@ -201,12 +201,6 @@ public class JsonGenesisConfigOptions implements GenesisConfigOptions {
   }
 
   @Override
-  // TODO EIP-1559 change for the actual fork name when known
-  public OptionalLong getEIP1559BlockNumber() {
-    return getOptionalLong("eip1559block");
-  }
-
-  @Override
   public OptionalLong getClassicForkBlock() {
     return getOptionalLong("classicforkblock");
   }

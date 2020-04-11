@@ -18,6 +18,7 @@ import org.hyperledger.besu.crypto.SECP256K1.KeyPair;
 import org.hyperledger.besu.crypto.SECP256K1.PublicKey;
 import org.hyperledger.besu.crypto.SECP256K1.Signature;
 
+import org.apache.tuweni.bytes.Bytes;
 import org.apache.tuweni.bytes.Bytes32;
 
 public class BouncyCastleNodeKey implements NodeKey {
@@ -45,5 +46,10 @@ public class BouncyCastleNodeKey implements NodeKey {
   @Override
   public Bytes32 calculateECDHKeyAgreement(final PublicKey publicKey) {
     return SECP256K1.calculateECDHKeyAgreement(nodeKeys.getPrivateKey(), publicKey);
+  }
+
+  @Override
+  public Bytes calculateECIESKeyAgreement(final SECP256K1.PublicKey pubKey) {
+    return SECP256K1.calculateECIESKeyAgreement(nodeKeys.getPrivateKey(), pubKey);
   }
 }
